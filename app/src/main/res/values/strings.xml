@@ -2,7 +2,10 @@
     <string name="app_name">To Do List</string>
     <string name="app_title">To Do List!!!</string>
     <string name="timeline_title">Timeline</string>
-    <string name="appquibb1">To do or not to do! That is the question!</string>
-    <string name="appquibb2">To do list? Toodledoo.</string>
-    <string name="appquibb3">Ok mom, I'll do it, geez.</string>
+    <string name="appquibb1">"To do or not to do! That is the question!"</string>
+    <string name="appquibb2">"To do list? Toodledoo."</string>
+    <string name="appquibb3">"Ok mom, I'll do it, geez."</string>
+    <string name="title_activity_category">"Category"</string>
+    <string name="categorytop">"Category: "</string>
+
 </resources>
