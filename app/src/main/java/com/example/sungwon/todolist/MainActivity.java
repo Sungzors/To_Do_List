@@ -1,7 +1,9 @@
 package com.example.sungwon.todolist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         } else {
             mToDoPhrase.setText(R.string.appquibb3);
         }
+        mToDoStartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Category.class);
+                startActivity(intent);
+            }
+        });
 //        Calendar rightNow = GregorianCalendar.getInstance();
 //        String itisTime = (rightNow.get(GregorianCalendar.DATE)+ "," + rightNow.get(GregorianCalendar.MONTH)+1);
 //        mDueSoonView.setText(itisTime);

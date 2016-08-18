@@ -7,5 +7,14 @@
     <string name="appquibb3">"Ok mom, I'll do it, geez."</string>
     <string name="title_activity_category">"Category"</string>
     <string name="categorytop">"Category: "</string>
+    <string name="addnewCat">"Add"</string>
+    <string name="cancelmahCat">"Cancel"</string>
+    <string name="wannaaddCat">"Please Set Category Name:"</string>
+    <string name="addnewTodo">"Add"</string>
+    <string name="cancelmahTodo">"Cancel"</string>
+    <string name="wannaaddTodo">"Please Set Todo Name:"</string>
+    <string name="alphaba">"Alphabet"</string>
+    <string name="datea">"Date"</string>
+    <string name="doneso">"Expired"</string>
 
 </resources>

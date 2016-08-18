@@ -1,6 +1,7 @@
 package com.example.sungwon.todolist;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -39,6 +40,22 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder viewHolder;
+
+        if(view == null){
+            view = LayoutInflater.from(context).inflate(R.layout.list_item, viewGroup, false);
+        } else {
+
+        }
+
+        TextView taskText = (TextView) view.findViewById(R.id.tasktext);
+        TextView startDateText = (TextView) view.findViewById(R.id.startDateText);
+        TextView dueDateText = (TextView) view.findViewById(R.id.dueDateText);
+        final ToDoDoDa toodles = todoList.get(i);
+        taskText.setText("Task: " + toodles.getTask());
+        startDateText.setText("Start: " + toodles.getDateMade());
+        dueDateText.setText("Due: " + toodles.getDueDate());
+
         return null;
     }
     static class ViewHolder{
@@ -47,9 +64,9 @@ public class CustomAdapter extends BaseAdapter {
         TextView viewLowText;
 
         public ViewHolder(View itemlayout) {
-            this.viewDateText = (TextView) itemlayout.findViewById(R.id.dateText);
-            this.viewHighText = (TextView) itemlayout.findViewById(R.id.highText);
-            this.viewLowText = (TextView) itemlayout.findViewById(R.id.lowText);
+//            this.viewDateText = (TextView) itemlayout.findViewById(R.id.dateText);
+//            this.viewHighText = (TextView) itemlayout.findViewById(R.id.highText);
+//            this.viewLowText = (TextView) itemlayout.findViewById(R.id.lowText);
         }
     }
 }

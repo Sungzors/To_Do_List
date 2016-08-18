@@ -7,8 +7,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sungwon.todolist.Category">
+    tools:context="com.example.sungwon.todolist.ToDoListActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/alphabetize"
+            android:text="@string/alphaba"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/datetize"
+            android:text="@string/datea"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/donesos"
+            android:text="@string/doneso"/>
 
+
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
@@ -19,17 +46,14 @@
         android:cacheColorHint="@android:color/holo_red_dark"
         android:textFilterEnabled="false"
         android:backgroundTint="#ffffff"
-        android:background="#ffffff"></ListView>
+        android:background="#ffffff">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="top"
-        android:text="@string/categorytop"
-        android:textSize="35sp"/>
+
+
+    </ListView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
