@@ -44,8 +44,10 @@ public class CustomAdapter extends BaseAdapter {
 
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.list_item, viewGroup, false);
+            viewHolder = new ViewHolder(view);
+            view.setTag(viewHolder);
         } else {
-
+            viewHolder = (ViewHolder) view.getTag();
         }
 
         TextView taskText = (TextView) view.findViewById(R.id.tasktext);
@@ -59,14 +61,14 @@ public class CustomAdapter extends BaseAdapter {
         return null;
     }
     static class ViewHolder{
-        TextView viewDateText;
-        TextView viewHighText;
-        TextView viewLowText;
+        TextView taskText;
+        TextView startDateText;
+        TextView dueDateText;
 
         public ViewHolder(View itemlayout) {
-//            this.viewDateText = (TextView) itemlayout.findViewById(R.id.dateText);
-//            this.viewHighText = (TextView) itemlayout.findViewById(R.id.highText);
-//            this.viewLowText = (TextView) itemlayout.findViewById(R.id.lowText);
+            this.taskText = (TextView) itemlayout.findViewById(R.id.tasktext);
+            this.startDateText = (TextView) itemlayout.findViewById(R.id.startDateText);
+            this.dueDateText = (TextView) itemlayout.findViewById(R.id.dueDateText);
         }
     }
 }
