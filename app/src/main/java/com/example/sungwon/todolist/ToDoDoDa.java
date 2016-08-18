@@ -71,8 +71,8 @@ public class ToDoDoDa {
         return dueDate;
     }
 
-    public void setDueDate(String dueDate) {
-        if (dueDate == null) this.dueDate = this.dueDateNumbah.get(GregorianCalendar.MONTH)+1+ " / " + this.dueDateNumbah.get(GregorianCalendar.DATE) + " / " + this.dueDateNumbah.get(Calendar.YEAR);
+    public void setDueDate() {
+        if (dueDateNumbah == null) this.dueDate = this.dueDateNumbah.get(GregorianCalendar.MONTH)+1+ " / " + this.dueDateNumbah.get(GregorianCalendar.DATE) + " / " + this.dueDateNumbah.get(Calendar.YEAR);
         this.dueDate = dueDate;
     }
 }

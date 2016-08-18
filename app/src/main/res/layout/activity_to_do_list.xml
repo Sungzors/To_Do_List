@@ -41,7 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/list_view"
-        android:padding="10dp"
         android:layout_marginTop="80dp"
         android:cacheColorHint="@android:color/holo_red_dark"
         android:textFilterEnabled="false"
@@ -61,7 +60,6 @@
         android:layout_alignParentRight="true"
         android:tint="@android:color/white"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/action_plus"
-        android:onClick="changeTheText"/>
+        android:src="@drawable/action_plus"/>
 
 </RelativeLayout>

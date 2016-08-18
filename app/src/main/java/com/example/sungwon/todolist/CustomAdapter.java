@@ -50,15 +50,15 @@ public class CustomAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        TextView taskText = (TextView) view.findViewById(R.id.tasktext);
-        TextView startDateText = (TextView) view.findViewById(R.id.startDateText);
-        TextView dueDateText = (TextView) view.findViewById(R.id.dueDateText);
+        viewHolder.taskText = (TextView) view.findViewById(R.id.tasktext);
+        viewHolder.startDateText = (TextView) view.findViewById(R.id.startDateText);
+        viewHolder.dueDateText = (TextView) view.findViewById(R.id.dueDateText);
         final ToDoDoDa toodles = todoList.get(i);
-        taskText.setText("Task: " + toodles.getTask());
-        startDateText.setText("Start: " + toodles.getDateMade());
-        dueDateText.setText("Due: " + toodles.getDueDate());
+        viewHolder.taskText.setText("Task: " + toodles.getTask());
+        viewHolder.startDateText.setText("Start: \n" + toodles.getDateMade());
+        viewHolder.dueDateText.setText("Due: \n" + toodles.getDueDate());
 
-        return null;
+        return view;
     }
     static class ViewHolder{
         TextView taskText;

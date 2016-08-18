@@ -13,6 +13,7 @@
     <string name="addnewTodo">"Add"</string>
     <string name="cancelmahTodo">"Cancel"</string>
     <string name="wannaaddTodo">"Please Set Todo Name:"</string>
+    <string name="wannaadddue">"Please Set the Due Date:"</string>
     <string name="alphaba">"Alphabet"</string>
     <string name="datea">"Date"</string>
     <string name="doneso">"Expired"</string>
