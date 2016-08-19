@@ -7,20 +7,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ToDoListActivity extends AppCompatActivity {
     Button mAlphaba;
     Button mDatea;
     Button mDoneso;
     ListView listView;
-    ArrayList<ToDoDoDa> mToDoArray;
-    ArrayList<ToDoDoDa> mShowToDo;
+    LinkedList<ToDoDoDa> mToDoArray;
+    LinkedList<ToDoDoDa> mShowToDo;
     CustomAdapter customAdapter;
     String categoryChosen;
 
@@ -35,8 +37,8 @@ public class ToDoListActivity extends AppCompatActivity {
         mDatea = (Button)findViewById(R.id.datetize);
         mDoneso = (Button)findViewById(R.id.donesos);
         listView = (ListView)findViewById(R.id.list_view);
-        mToDoArray = new ArrayList<>();
-        mShowToDo = new ArrayList<>();
+        mToDoArray = new LinkedList<>();
+        mShowToDo = new LinkedList<>();
         mToDoArray.add(0, new ToDoDoDa("Dummy", "Nothing Here"));
 
         for (int i = 0; i < mToDoArray.size(); i++) {
@@ -64,6 +66,10 @@ public class ToDoListActivity extends AppCompatActivity {
                 positiveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(yearText.getText().toString().equals("")||monthText.getText().toString().equals("")||dayText.getText().toString().equals("")) {
+                            Toast.makeText(ToDoListActivity.this, "Please enter a valid date", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         int yearInt = Integer.parseInt(yearText.getText().toString());
                         int monthInt = Integer.parseInt(monthText.getText().toString());
                         int dayInt = Integer.parseInt(dayText.getText().toString());
@@ -86,6 +92,18 @@ public class ToDoListActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mToDoArray.remove();
+                mShowToDo.remove();
+                customAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+
 
     }
 

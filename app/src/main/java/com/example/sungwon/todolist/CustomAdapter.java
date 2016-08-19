@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Created by SungWon on 8/17/2016.
@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class CustomAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<ToDoDoDa> todoList;
+    private LinkedList<ToDoDoDa> todoList;
 
-    public CustomAdapter(Context context, ArrayList<ToDoDoDa> todoList) {
+    public CustomAdapter(Context context, LinkedList<ToDoDoDa> todoList) {
         this.context = context;
         this.todoList = todoList;
     }
