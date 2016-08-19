@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class ToDoListActivity extends AppCompatActivity {
@@ -74,7 +75,10 @@ public class ToDoListActivity extends AppCompatActivity {
                         int monthInt = Integer.parseInt(monthText.getText().toString());
                         int dayInt = Integer.parseInt(dayText.getText().toString());
                         ToDoDoDa newToDo = new ToDoDoDa(categoryChosen, input.getText().toString());
-                        newToDo.setDueDateNumbah(yearInt, monthInt, dayInt);
+                        newToDo.setDueDateNumbah(yearInt, monthInt-1, dayInt);
+                        if(newToDo.getDueDateNumbah().getTimeInMillis()<newToDo.getDateNumbah().getTimeInMillis()){
+                            newToDo.setDueDateNumbah(newToDo.getDateNumbah());
+                        }
                         mToDoArray.add(newToDo);
                         mShowToDo.add(newToDo);
                         customAdapter.notifyDataSetChanged();
@@ -103,6 +107,29 @@ public class ToDoListActivity extends AppCompatActivity {
             }
         });
 
+        mAlphaba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(mShowToDo, new ComparatorAlpha());
+                customAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mDatea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(mShowToDo, new ComparatorDate());
+                customAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mDoneso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Collections.sort(mShowToDo, new ComparatorDue());
+                customAdapter.notifyDataSetChanged();
+            }
+        });
 
 
     }

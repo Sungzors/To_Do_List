@@ -15,7 +15,7 @@
     <string name="wannaaddTodo">"Please Set Todo Name:"</string>
     <string name="wannaadddue">"Please Set the Due Date:"</string>
     <string name="alphaba">"Alphabet"</string>
-    <string name="datea">"Date"</string>
-    <string name="doneso">"Expired"</string>
+    <string name="datea">"Created"</string>
+    <string name="doneso">"Due"</string>
 
 </resources>

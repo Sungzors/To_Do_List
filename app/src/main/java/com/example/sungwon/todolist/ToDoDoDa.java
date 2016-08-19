@@ -34,6 +34,10 @@ public class ToDoDoDa {
         this.dueDateNumbah = rightNow;
         this.dueDate = rightNow.get(GregorianCalendar.MONTH)+1+ " / " + rightNow.get(GregorianCalendar.DATE) + " / " + rightNow.get(Calendar.YEAR);
     }
+    public void setDueDateNumbah(Calendar newDate){
+        this.dueDateNumbah = newDate;
+        this.dueDate = getDateMade();
+    }
 
     public String getCategory() {
         return category;

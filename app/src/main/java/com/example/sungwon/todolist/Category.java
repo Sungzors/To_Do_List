@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -56,6 +57,10 @@ public class Category extends AppCompatActivity {
         builder.setMessage(R.string.wannaaddCat)
                 .setPositiveButton(R.string.addnewCat, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        if(input.getText().toString().equals("")){
+                            Toast.makeText(Category.this, "Please Insert a Category", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         mCategoryList.add(input.getText().toString());
                         mAdapter.notifyDataSetChanged();
                     }
