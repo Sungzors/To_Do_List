@@ -19,14 +19,19 @@ import java.util.LinkedList;
 
 public class Category extends AppCompatActivity {
     LinkedList<String> mCategoryList;
+    LinkedList<ToDoDoDa> mTodoArray;
     ArrayAdapter<String> mAdapter;
     ListView listView;
+    ToDoDoDa doda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
         listView = (ListView) findViewById(R.id.list_view);
+        Intent intent1 = getIntent();
+        mTodoArray = (LinkedList<ToDoDoDa>)intent1.getSerializableExtra("activities");
 
         mCategoryList = new LinkedList<>();
 
@@ -40,6 +45,7 @@ public class Category extends AppCompatActivity {
                 String text = textView.getText().toString();
                 Intent intent = new Intent(Category.this, ToDoListActivity.class);
                 intent.putExtra("categoryname", text);
+                if (mTodoArray!= null)intent.putExtra("todoarray", mTodoArray);
                 startActivity(intent);
             }
         });

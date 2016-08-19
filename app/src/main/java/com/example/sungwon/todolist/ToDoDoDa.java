@@ -1,12 +1,13 @@
 package com.example.sungwon.todolist;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
  * Created by SungWon on 8/17/2016.
  */
-public class ToDoDoDa {
+public class ToDoDoDa implements Serializable{
 
     String category;
     String task;

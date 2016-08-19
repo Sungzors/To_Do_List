@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class ToDoListActivity extends AppCompatActivity {
     LinkedList<ToDoDoDa> mShowToDo;
     CustomAdapter customAdapter;
     String categoryChosen;
+    ImageButton backitup;
 
 
     @Override
@@ -38,7 +40,9 @@ public class ToDoListActivity extends AppCompatActivity {
         mDatea = (Button)findViewById(R.id.datetize);
         mDoneso = (Button)findViewById(R.id.donesos);
         listView = (ListView)findViewById(R.id.list_view);
+        backitup = (ImageButton) findViewById(R.id.backitUP);
         mToDoArray = new LinkedList<>();
+        if (intent.getSerializableExtra("todoarray")!=null) mToDoArray = (LinkedList<ToDoDoDa>)intent.getSerializableExtra("todoarray");
         mShowToDo = new LinkedList<>();
         mToDoArray.add(0, new ToDoDoDa("Dummy", "Nothing Here"));
 
@@ -131,7 +135,14 @@ public class ToDoListActivity extends AppCompatActivity {
             }
         });
 
-
+        backitup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(ToDoListActivity.this, Category.class);
+                intent1.putExtra("activities", mToDoArray);
+                startActivity(intent1);
+            }
+        });
     }
 
 
