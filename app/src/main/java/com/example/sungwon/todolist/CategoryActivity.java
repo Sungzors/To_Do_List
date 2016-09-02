@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.LinkedList;
 
-public class Category extends AppCompatActivity {
+public class CategoryActivity extends AppCompatActivity {
     LinkedList<String> mCategoryList;
     ArrayAdapter<String> mAdapter;
     ListView listView;
@@ -38,7 +38,7 @@ public class Category extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView textView = ((TextView)view);
                 String text = textView.getText().toString();
-                Intent intent = new Intent(Category.this, ToDoListActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, ToDoListActivity.class);
                 intent.putExtra("categoryname", text);
                 startActivity(intent);
             }
@@ -58,7 +58,7 @@ public class Category extends AppCompatActivity {
                 .setPositiveButton(R.string.addnewCat, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         if(input.getText().toString().equals("")){
-                            Toast.makeText(Category.this, "Please Insert a Category", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CategoryActivity.this, "Please Insert a Category", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         mCategoryList.add(input.getText().toString());

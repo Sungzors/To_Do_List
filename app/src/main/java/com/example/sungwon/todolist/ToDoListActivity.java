@@ -26,6 +26,7 @@ public class ToDoListActivity extends AppCompatActivity {
     LinkedList<ToDoDoDa> mShowToDo;
     CustomAdapter customAdapter;
     String categoryChosen;
+    SQLHelper mHelper;
 
 
     @Override
@@ -40,13 +41,7 @@ public class ToDoListActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.list_view);
         mToDoArray = new LinkedList<>();
         mShowToDo = new LinkedList<>();
-        mToDoArray.add(0, new ToDoDoDa("Dummy", "Nothing Here"));
 
-        for (int i = 0; i < mToDoArray.size(); i++) {
-            if(mToDoArray.get(i).getTask().equals(categoryChosen)){
-                mShowToDo.add(mToDoArray.get(i));
-            }
-        }
         customAdapter = new CustomAdapter(this, mShowToDo );
         listView.setAdapter(customAdapter);
 
@@ -76,9 +71,7 @@ public class ToDoListActivity extends AppCompatActivity {
                         int dayInt = Integer.parseInt(dayText.getText().toString());
                         ToDoDoDa newToDo = new ToDoDoDa(categoryChosen, input.getText().toString());
                         newToDo.setDueDateNumbah(yearInt, monthInt-1, dayInt);
-                        if(newToDo.getDueDateNumbah().getTimeInMillis()<newToDo.getDateNumbah().getTimeInMillis()){
-                            newToDo.setDueDateNumbah(newToDo.getDateNumbah());
-                        }
+
                         mToDoArray.add(newToDo);
                         mShowToDo.add(newToDo);
                         customAdapter.notifyDataSetChanged();

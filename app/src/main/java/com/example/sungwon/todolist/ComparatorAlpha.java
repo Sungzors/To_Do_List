@@ -8,6 +8,6 @@ import java.util.Comparator;
 public class ComparatorAlpha implements Comparator<ToDoDoDa> {
     @Override
     public int compare(ToDoDoDa toDoDoDa, ToDoDoDa t1) {
-        return toDoDoDa.getTask().compareToIgnoreCase(t1.getTask());
+        return toDoDoDa.getmTask().compareToIgnoreCase(t1.getmTask());
     }
 }
