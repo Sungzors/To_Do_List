@@ -21,6 +21,7 @@ public class CategoryActivity extends AppCompatActivity {
     LinkedList<String> mCategoryList;
     ArrayAdapter<String> mAdapter;
     ListView listView;
+    SQLHelper mHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class CategoryActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_view);
 
         mCategoryList = new LinkedList<>();
+        mHelper = new SQLHelper(this);
+        mCategoryList = mHelper.getCategory();
 
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mCategoryList);
         listView.setAdapter(mAdapter);

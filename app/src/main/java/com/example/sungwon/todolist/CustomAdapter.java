@@ -55,8 +55,8 @@ public class CustomAdapter extends BaseAdapter {
         viewHolder.dueDateText = (TextView) view.findViewById(R.id.dueDateText);
         final ToDoDoDa toodles = todoList.get(i);
         viewHolder.taskText.setText("Task: " + toodles.getmTask());
-        viewHolder.startDateText.setText("Start: \n" + toodles.getDateMade());
-        viewHolder.dueDateText.setText("Due: \n" + toodles.getDueDate());
+        viewHolder.startDateText.setText("Start: \n" + toodles.getDateNumbah().substring(0, 11));
+        viewHolder.dueDateText.setText("Due: \n" + toodles.getDueDateNumbah().substring(0,11));
 
         return view;
     }

@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by SungWon on 8/29/2016.
@@ -19,7 +18,7 @@ public class SQLHelper extends SQLiteOpenHelper{
     public static final String DB_NAME = "todo_db";
 
     public SQLHelper(Context context) {
-        super(context, DB_NAME, null, 1);
+        super(context, DB_NAME, null, 2);
     }
 
     private static SQLHelper INSTANCE;
@@ -85,7 +84,7 @@ public class SQLHelper extends SQLiteOpenHelper{
     private static final String SQL_CREATE_ENTRIES_CATEGORY = "CREATE TABLE " +
             CategoryTable.TABLE_NAME + " (" +
             CategoryTable._ID + " INTEGER PRIMARY KEY," +
-            CategoryTable.COLUMN_CATEGORY + " TEXT," + ")";
+            CategoryTable.COLUMN_CATEGORY + " TEXT" + ")";
 
     /**
      * SQL command to delete our company table.
@@ -157,7 +156,7 @@ public class SQLHelper extends SQLiteOpenHelper{
     public LinkedList<ToDoDoDa> getRightTasks(String category) {
         SQLiteDatabase db = getReadableDatabase();
         LinkedList<ToDoDoDa> goodlist = new LinkedList<>();
-        String query = "SELECT "+ TodoTable.COLUMN_TODO + ", " + TodoTable.COLUMN_CREATED + ", " + TodoTable.COLUMN_DUE + ", " + CategoryTable._ID + " FROM "+ TodoTable.TABLE_NAME + " INNER JOIN " + CategoryTable.TABLE_NAME + " ON " + TodoTable.TABLE_NAME + "." + TodoTable.COLUMN_CATEGORY_ID + " = " + CategoryTable.TABLE_NAME + "." + CategoryTable._ID + " WHERE " + CategoryTable.COLUMN_CATEGORY + " = ?";
+        String query = "SELECT "+ TodoTable.COLUMN_TODO + ", " + TodoTable.COLUMN_CREATED + ", " + TodoTable.COLUMN_DUE + ", " + TodoTable.COLUMN_CATEGORY_ID + " FROM "+ TodoTable.TABLE_NAME + " INNER JOIN " + CategoryTable.TABLE_NAME + " ON " + TodoTable.TABLE_NAME + "." + TodoTable.COLUMN_CATEGORY_ID + " = " + CategoryTable.TABLE_NAME + "." + CategoryTable._ID + " WHERE " + CategoryTable.COLUMN_CATEGORY + " Like ?";
         Cursor cursor = db.rawQuery(query, new String[]{category});
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
@@ -172,35 +171,41 @@ public class SQLHelper extends SQLiteOpenHelper{
     }
 
     /**
-     * TODO: Get the Names of all the employees who work in companies based in California.
+     * TODO: Get category id
      * @return List of employee names.
      */
-    public List<String> getEmployeesLocatedInCalifornia() {
-        return null;
+    public int getCategoryid(String category) {
+        SQLiteDatabase db = getReadableDatabase();
+        int goodlist = 0;
+        String query = "SELECT "+ CategoryTable._ID + ", " + CategoryTable.COLUMN_CATEGORY + " FROM "+ CategoryTable.TABLE_NAME + " WHERE " + CategoryTable.COLUMN_CATEGORY + " like ?";
+        Cursor cursor = db.rawQuery(query, new String[]{category});
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            goodlist = cursor.getInt(0);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return goodlist;
     }
 
     /**
-     * TODO: Get the names of all companies who have employees earning 6 figure salaries.
-     * @return List of company names.
+     * TODO: Get category id
+     * @return List of employee names.
      */
-    public List<String> getCompanysWithSixFigureSalary() {
-        return null;
-    }
-
-    /**
-     * TODO: Get the names of everyone who doesn't have a job (Their company_id doesn't match any companies in the database).
-     * @return List of names.
-     */
-    public List<String> getUnemployed() {
-        return null;
-    }
-
-    /**
-     * TODO: Get the names off all companies in the database.
-     * @return Cursor
-     */
-    public Cursor getAllCompanies(){
-        return null;
+    public LinkedList<String> getCategory() {
+        SQLiteDatabase db = getReadableDatabase();
+        LinkedList<String> goodlist = new LinkedList<>();
+        String query = "SELECT "+ CategoryTable._ID + ", " + CategoryTable.COLUMN_CATEGORY + " FROM "+ CategoryTable.TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            goodlist.add(cursor.getString(1));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return goodlist;
     }
 
 

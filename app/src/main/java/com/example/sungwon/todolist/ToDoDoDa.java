@@ -2,7 +2,6 @@ package com.example.sungwon.todolist;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  * Created by SungWon on 8/17/2016.
@@ -10,19 +9,20 @@ import java.util.GregorianCalendar;
 public class ToDoDoDa {
 
     String mCategory;
-    long mCategory_id; //mCategory_id id
+    int mCategory_id; //mCategory_id id
     String mTask;
     String dateMade; //view OBSOLETE
     String dateNumbah; //method
     String dueDate; //view OBSOLETE
     String dueDateNumbah; //method'
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public ToDoDoDa(String mCategory, long category, String task) {
+    public ToDoDoDa(String mCategory, int category, String task) {
         this.mCategory = mCategory;
         this.mCategory_id = category;
         this.mTask = task;
-        this.dateNumbah = sdf.format(GregorianCalendar.getInstance());
+        Calendar rightNow = Calendar.getInstance();
+        this.dateNumbah = sdf.format(rightNow.getTime());
         this.dueDateNumbah = this.dateNumbah;
 //        this.dateMade = (rightNow.get(GregorianCalendar.MONTH)+1+ " / " + rightNow.get(GregorianCalendar.DATE) + " / " + rightNow.get(Calendar.YEAR));
 //        this.dateNumbah = rightNow;
@@ -34,9 +34,9 @@ public class ToDoDoDa {
 
     public void setDueDateNumbah(int year, int month, int date) {
         if (dueDateNumbah == null) this.dueDateNumbah = this.dateNumbah;
-        Calendar rightNow = new GregorianCalendar();
+        Calendar rightNow = Calendar.getInstance();
         rightNow.set(year, month, date);
-        this.dueDateNumbah = sdf.format(rightNow);
+        this.dueDateNumbah = sdf.format(rightNow.getTime());
 //        this.dueDate = rightNow.get(GregorianCalendar.MONTH)+1+ " / " + rightNow.get(GregorianCalendar.DATE) + " / " + rightNow.get(Calendar.YEAR);
     }
 
@@ -61,7 +61,7 @@ public class ToDoDoDa {
         return mCategory_id;
     }
 
-    public void setmCategory_id(long mCategory_id) {
+    public void setmCategory_id(int mCategory_id) {
         this.mCategory_id = mCategory_id;
     }
 

@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView mDueSoonView;
     Button mToDoStartButton;
     Button mTimelineStartButton;
-
+    SQLHelper mHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             mToDoPhrase.setText(R.string.appquibb3);
         }
+//        mHelper = new SQLHelper(this);
+//        mHelper.addDataToDb();
         mToDoStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Category.class);
+                Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
                 startActivity(intent);
             }
         });

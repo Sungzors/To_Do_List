@@ -12,10 +12,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <mCategory_id android:name="android.intent.mCategory_id.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Category" />
+        <activity android:name=".CategoryActivity" />
         <activity android:name=".ToDoListActivity"></activity>
     </application>
 

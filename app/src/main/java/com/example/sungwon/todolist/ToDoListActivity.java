@@ -42,7 +42,11 @@ public class ToDoListActivity extends AppCompatActivity {
         mToDoArray = new LinkedList<>();
         mShowToDo = new LinkedList<>();
 
-        customAdapter = new CustomAdapter(this, mShowToDo );
+        mHelper = new SQLHelper(this);
+        mToDoArray = mHelper.getRightTasks(categoryChosen);
+        final int catid = mHelper.getCategoryid(categoryChosen);
+
+        customAdapter = new CustomAdapter(this, mToDoArray );
         listView.setAdapter(customAdapter);
 
         final FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab2);
@@ -69,11 +73,11 @@ public class ToDoListActivity extends AppCompatActivity {
                         int yearInt = Integer.parseInt(yearText.getText().toString());
                         int monthInt = Integer.parseInt(monthText.getText().toString());
                         int dayInt = Integer.parseInt(dayText.getText().toString());
-                        ToDoDoDa newToDo = new ToDoDoDa(categoryChosen, input.getText().toString());
+                        ToDoDoDa newToDo = new ToDoDoDa(categoryChosen, catid, input.getText().toString());
                         newToDo.setDueDateNumbah(yearInt, monthInt-1, dayInt);
 
                         mToDoArray.add(newToDo);
-                        mShowToDo.add(newToDo);
+                        mHelper.insertTodo(newToDo);
                         customAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -127,5 +131,12 @@ public class ToDoListActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        mHelper = new SQLHelper(this);
+        mToDoArray = mHelper.getRightTasks(categoryChosen);
+        customAdapter = new CustomAdapter(this, mToDoArray );
+        listView.setAdapter(customAdapter);
+        super.onResume();
+    }
 }
